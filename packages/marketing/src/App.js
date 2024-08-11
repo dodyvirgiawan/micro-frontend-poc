@@ -1,7 +1,7 @@
 import React from 'react';
 
 // ======= Will come back to this later =======
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, Router } from 'react-router-dom';
 import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles';
 // ======= Will come back to this later =======
 
@@ -13,17 +13,27 @@ const generateClassName = createGenerateClassName({
   productionPrefix: 'marketing'
 })
 
-export default function App() {
+export default function App({ history }) {
   console.log('Hello from marketing engineering team!')
 
   return (
     <StylesProvider generateClassName={generateClassName}>
-      <BrowserRouter>
+      {/* Previously we use Browser History */}
+      {/* <BrowserRouter>
         <Switch>
           <Route exact path="/pricing" component={Pricing} />
           <Route path="/" component={Landing} />
         </Switch>
-      </BrowserRouter>
+      </BrowserRouter> */}
+
+      {/* We want Memory History instead -> due to navigation conflict with container/shell app */}
+      <Router history={history}>
+        <Switch>
+          <Route exact path="/pricing" component={Pricing} />
+          <Route path="/" component={Landing} />
+        </Switch>
+      </Router>
+
     </StylesProvider>
   )
 }
