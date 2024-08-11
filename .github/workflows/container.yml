@@ -19,6 +19,7 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest # will run this on linux-based github-hosted VMs
+    environment: production
 
     steps:
       - uses: actions/checkout@v2 # this is reusable action provided by github action communities
