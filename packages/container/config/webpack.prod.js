@@ -27,7 +27,7 @@ const prodConfig = {
 
       remotes: {
         // Since this is a production, we need to specify where each MFE will be deployed to
-        marketing: `marketing@${domain}/marketing/remoteEntry.js` // for now this /marketing is big assumption.
+        marketing: `marketing@${domain}/marketing/latest/remoteEntry.js` // for now this /marketing is big assumption.
       },
 
       shared: {

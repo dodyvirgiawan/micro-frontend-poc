@@ -25,6 +25,10 @@ jobs:
       - uses: actions/checkout@v2 # this is reusable action provided by github action communities
       - run: npm install
       - run: npm run build
+        # This just to make sure webpack will get the correct production domain as provided in GitHub's Environment Variables
+        # In BUILD TIME.
+        env:
+          PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
 
       # Programatic access to AWS S3, since we want to upload the dist folder to AWS S3
       - uses: shinyinc/action-aws-cli@v1.2
