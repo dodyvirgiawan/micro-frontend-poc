@@ -1,12 +1,16 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+
 import MarketingAppBootstrap from './components/marketing-app-bootstrap';
+import Header from './components/Header'
 
 export default function App() {
   return (
-    <main>
-      <h1>Hi there from Container App!</h1>
-      <hr/>
-      <MarketingAppBootstrap />
-    </main>
+    <BrowserRouter>
+      <div>
+        <Header />
+        <MarketingAppBootstrap />
+      </div>
+    </BrowserRouter>
   )
 }
