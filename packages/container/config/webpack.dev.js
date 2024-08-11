@@ -1,7 +1,6 @@
 const { merge } = require('webpack-merge') // to merge different webpack config files
 const commonConfig = require('./webpack.common');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
 
 const packageJsonDependencies = require('../package.json').dependencies;
@@ -29,10 +28,6 @@ const devConfig = {
       // Webpack will look at your deps automatically, thats why just specify packageJson Dependencies
       shared: packageJsonDependencies
     }),
-
-    new HtmlWebpackPlugin({
-      template: './public/index.html'
-    })
   ]
 }
 

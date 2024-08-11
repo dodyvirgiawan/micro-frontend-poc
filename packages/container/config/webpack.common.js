@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   module: {
     // Define a loader, tell webpack to process some different files as we import them to our project.
@@ -18,5 +20,11 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html'
+    })
+  ]
 }
