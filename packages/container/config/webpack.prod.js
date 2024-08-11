@@ -12,7 +12,10 @@ const prodConfig = {
   mode: 'production', // will minify the bundle, and other optimizations
 
   output: {
-    filename: '[name].[contenthash].js', // specify the format of output filename. useful when caching issues so cache invalidation will work predictably
+    // ! this content hash is useful because will change evry deployment, can act as way to notify AWS cloudfront that this is a new file -> therefore invalidate the cache
+    // --> this is for the case for javascript file
+    // --> for the case of index.html file, we need to automate it via the container github action workflow
+    filename: '[name].[contenthash].js',
     
     // ! override default JS behaviour when trying load a script tag, we want webpack to specify this path as well before the filename (must be same with our S3 bucket location, where we specify in GitHub action AWS CLI)
     publicPath: '/container/latest/', 
