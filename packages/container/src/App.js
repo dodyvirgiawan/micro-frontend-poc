@@ -3,14 +3,21 @@ import { BrowserRouter } from 'react-router-dom';
 
 import MarketingAppBootstrap from './components/marketing-app-bootstrap';
 import Header from './components/Header'
+import { StylesProvider, createGenerateClassName } from '@material-ui/core';
+
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'container'
+})
 
 export default function App() {
+  console.log('Hello from container engineering team!')
+
   return (
-    <BrowserRouter>
-      <div>
+    <StylesProvider generateClassName={generateClassName}>
+      <BrowserRouter>
         <Header />
         <MarketingAppBootstrap />
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </StylesProvider>
   )
 }
