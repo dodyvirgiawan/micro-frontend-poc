@@ -28,7 +28,7 @@ jobs:
 
       # Programatic access to AWS S3, since we want to upload the dist folder to AWS S3
       - uses: shinyinc/action-aws-cli@v1.2
-      - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest # point is we specify the AWS S3 bucket to host our bundled production file
+      - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest # point is we specify the AWS S3 bucket to host our bundled production file, which is located in /container/latest AWS S3 bucket path
         env: # get secrets from github repo .env,
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

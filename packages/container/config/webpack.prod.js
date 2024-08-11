@@ -12,7 +12,10 @@ const prodConfig = {
   mode: 'production', // will minify the bundle, and other optimizations
 
   output: {
-    filename: '[name].[contenthash].js' // specify the format of output filename. useful when caching issues so cache invalidation will work predictably
+    filename: '[name].[contenthash].js', // specify the format of output filename. useful when caching issues so cache invalidation will work predictably
+    
+    // ! override default JS behaviour when trying load a script tag, we want webpack to specify this path as well before the filename (must be same with our S3 bucket location, where we specify in GitHub action AWS CLI)
+    publicPath: '/container/latest', 
   },
 
   plugins: [
