@@ -10,7 +10,7 @@ const generateClassName = createGenerateClassName({
   productionPrefix: 'auth'
 })
 
-export default function App({ history }) {
+export default function App({ history, onSignIn }) {
   console.log('Hello from auth engineering team!')
 
   return (
@@ -18,8 +18,13 @@ export default function App({ history }) {
       {/* We want Memory History  */}
       <Router history={history}>
         <Switch>
-          <Route path="/auth/signin" component={Signin} />
-          <Route path="/auth/signup" component={Signup} />
+          <Route path="/auth/signin">
+            <Signin onSignIn={onSignIn} />
+          </Route>
+
+          <Route path="/auth/signup" >
+            <Signup onSignUp={onSignIn} />
+          </Route>
         </Switch>
       </Router>
     </StylesProvider>

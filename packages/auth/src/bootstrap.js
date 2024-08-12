@@ -5,13 +5,13 @@ import App from './App'
 import { createMemoryHistory, createBrowserHistory } from 'history'
 
 const mount = (element, childEvents = {}, options = {}) => {
-  const { onNavigate } = childEvents;
-  const { defaultHistory } = options;
+  const { defaultHistory, initialPath = '/' } = options;
+  const { onNavigate, onSignIn } = childEvents;
 
   // This createMemoryHistory will default on /, since our container wants if the container open /auth (in container BrowserRouter) to immediately show /auth/signup (in this MemoryRouter)
   const history = defaultHistory || createMemoryHistory({ 
     // Therefore, add a default initial state of memory history to /auth/signin
-    initialEntries: ['/auth/signin']
+    initialEntries: [initialPath]
    });
 
   if (onNavigate) {
@@ -19,7 +19,10 @@ const mount = (element, childEvents = {}, options = {}) => {
   }
 
   ReactDOM.render(
-    <App history={history} />,
+    <App
+      history={history}
+      onSignIn={onSignIn}
+    />,
     element
   )
 
@@ -44,7 +47,7 @@ if (process.env.NODE_ENV === 'development') {
 
   if (isInIsolation) {
     mount(element, {}, {
-      defaultHistory: createBrowserHistory()
+      defaultHistory: createBrowserHistory(),
     })
   }
 }

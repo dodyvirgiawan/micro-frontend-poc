@@ -1,8 +1,8 @@
 import { mount } from 'auth/bootstrap'
-import React, { useRef, useEffect, } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-export default function AuthAppBootstrap() {
+export default function AuthAppBootstrap({ handleSignIn }) {
   const ref = useRef(null);
   
   const history = useHistory();
@@ -19,7 +19,11 @@ export default function AuthAppBootstrap() {
         if (pathname === nextPathname) return;
 
         history.push(nextPathname)
-      } 
+      },
+
+      onSignIn: () => {
+        if (handleSignIn) handleSignIn();
+      }
     }
 
     const options = {
