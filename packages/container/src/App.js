@@ -53,6 +53,7 @@ export default function App() {
             </Route>
 
             <Route path="/dashboard">
+              {!isSignedIn && <Redirect to="/" />}
               <LazyDashboardApp />
             </Route>
 
