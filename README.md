@@ -66,4 +66,4 @@ While Build-time MFE architecture requires you to deploy it in a sequence. So ea
 
 #### Notes
 
-This POC app is created alongside following an Udemy course, thanks to Stephen Grider. (https://www.udemy.com/course/microfrontend-course/)
+This POC app is created alongside following [an Udemy course](https://www.udemy.com/course/microfrontend-course/), thanks to Stephen Grider.
