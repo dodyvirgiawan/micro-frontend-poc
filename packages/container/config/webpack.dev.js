@@ -24,7 +24,8 @@ const devConfig = {
       name: 'container', // not required, just follow convention
       remotes: {
         'marketing': 'marketing@http://localhost:8081/remoteEntry.js',
-        'auth': 'auth@http://localhost:8082/remoteEntry.js'
+        'auth': 'auth@http://localhost:8082/remoteEntry.js',
+        'dashboard': 'dashboard@http://localhost:8083/remoteEntry.js'
       },
       // This is if you want to be more specific
       // Benefit is that it is highly customizable, only if you want to update it regularly

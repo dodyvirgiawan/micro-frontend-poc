@@ -1,39 +1,59 @@
-import React, { lazy, Suspense, useState } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React, { lazy, Suspense, useState, useEffect } from 'react';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 
 import Header from './components/Header'
 import { StylesProvider, createGenerateClassName } from '@material-ui/core';
 
 import Progress from './components/Progress';
 
-// import MarketingApp from './components/marketing-app-bootstrap';
-// import AuthApp from './components/auth-app-bootstrap';
-const LazyMarketingApp = lazy(() => import('./components/marketing-app-bootstrap'));
-const LazyAuthApp = lazy(() => import('./components/auth-app-bootstrap'));
+// Lazy load to improve initial load
+const LazyMarketingApp = lazy(() => import('./components/mfe-bootstrap/marketing-app-bootstrap'));
+const LazyAuthApp = lazy(() => import('./components/mfe-bootstrap/auth-app-bootstrap'));
+const LazyDashboardApp = lazy(() => import('./components/mfe-bootstrap/dashboard-app-bootstrap'))
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'container'
 })
+
+// Instantiate here so that we can access history here (to history push)
+// If we use <BrowserRouter /> we cant access the history
+// Only to reduce complexity
+const history = createBrowserHistory();
 
 export default function App() {
   console.log('Hello from container engineering team!')
 
   const [isSignedIn, setIsSignedIn] = useState(false);
 
-  const onSignIn = () => setIsSignedIn(true);
-  const onSignOut = () => setIsSignedIn(false);
+  const onSignIn = () => {
+    setIsSignedIn(true)
+  };
+
+  const onSignOut = () => {
+    setIsSignedIn(false)
+  };
+
+  useEffect(() => {
+    if (!isSignedIn) return;
+
+    history.push('/dashboard');
+  }, [isSignedIn])
 
   return (
     <StylesProvider generateClassName={generateClassName}>
-      <BrowserRouter>
+      <Router history={history}>
         <Header isSignedIn={isSignedIn} onSignOut={onSignOut} />
 
         {/* Routing Logic in Container -> to decide which MFE to show */}
-        {/* We lazily load the bootstrap of each MFE to reduce initial load size */}
         <Suspense fallback={<Progress />}>
           <Switch>
             <Route path="/auth">
               <LazyAuthApp handleSignIn={onSignIn} />
+            </Route>
+
+            <Route path="/dashboard">
+              <LazyDashboardApp />
             </Route>
 
             <Route path="/">
@@ -41,7 +61,7 @@ export default function App() {
             </Route>
           </Switch>
         </Suspense>
-      </BrowserRouter>
+      </Router>
     </StylesProvider>
   )
 }
