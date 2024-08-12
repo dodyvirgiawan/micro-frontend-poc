@@ -20,13 +20,13 @@ const prodConfig = {
 
       exposes: {
         './bootstrap': './src/bootstrap.js'
+      },
+
+      shared: {
+        ...packageJsonDependencies
       }
     })
   ],
-
-  shared: {
-    ...packageJsonDependencies
-  }
 }
 
 module.exports = merge(commonConfig, prodConfig);
