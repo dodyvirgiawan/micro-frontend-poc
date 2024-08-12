@@ -1,5 +1,7 @@
 # Micro Frontend Proof of Concept
 
+Demo: https://d1q8kh006cynrk.cloudfront.net
+
 ---
 
 ### Webpack Module Federation for Micro Frontend
