@@ -33,12 +33,23 @@ Mounting:
 State:
 - This app demonstrate basic authentication. State will be centralized in container (where it currently holds only `isSignedIn`). We `pass callbacks/events handler` into the `mount` function as 2nd argument.
 
+#### Routing
+One of the challenge in MFE Architecture is handling routing. Each MFE must be able to run in isolation, but also performs as expected when mounted into container app. This MFE architecture follow this approach:
+- Container App implements its routing logic to determine which MFE to render
+- Child App implements its routing logic to determine which page to render.
+
+Because we need to ensure loosely coupling between router technologies, we need to come up with generic solution for routing synchronization. We follow this approach:
+- Container App uses Browser Router:
+  - This is because Container App will be the one who is responsible to change a URL change. We need to communicate that change to children app.
+- Child App uses Memory Router:
+  - This is because children app will be the one who is responsible to change which page inside their project. We need to communicate that change to container app.
+
 #### CI/CD Pipeline
 This POC APP uses GitHub action to manages its CI/CD pipelines. You can see `.github/workflows` where there are 4 different `.yml` files, each taking care of each MFE deployment into an `AWS S3` bucket with `AWS Cloudfront` middleware acting as CDN Cache.
 
 ---
 
-### Closing Remarks
+### Closing Remarks (Opinion)
 
 #### Decomposition & Communication
 When decomposing MFE, my general rule is to minimize communication between each MFE as low as possible (or if possible, zero), let it be handled by backend APIs. 
@@ -66,4 +77,4 @@ While Build-time MFE architecture requires you to deploy it in a sequence. So ea
 
 #### Notes
 
-This POC app is created alongside following [an Udemy course](https://www.udemy.com/course/microfrontend-course/), thanks to Stephen Grider.
+- This POC app is created alongside following [an Udemy course](https://www.udemy.com/course/microfrontend-course/), thanks to Stephen Grider.
