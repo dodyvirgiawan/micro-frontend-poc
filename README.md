@@ -1,5 +1,7 @@
 # Micro Frontend Proof of Concept
 
+---
+
 ### Webpack Module Federation for Micro Frontend
 
 This repository demonstrates my learning of `Webpack Module Federation` when implementing Micro Frontends Architecture. This approach is using `Run-time Microfrontend` (more on my thoughts on `Build-time Microfrontend` on closing remarks below).
@@ -29,8 +31,10 @@ Mounting:
 State:
 - This app demonstrate basic authentication. State will be centralized in container (where it currently holds only `isSignedIn`). We `pass callbacks/events handler` into the `mount` function as 2nd argument.
 
-#### CI/CD
+#### CI/CD Pipeline
 This POC APP uses GitHub action to manages its CI/CD pipelines. You can see `.github/workflows` where there are 4 different `.yml` files, each taking care of each MFE deployment into an `AWS S3` bucket with `AWS Cloudfront` middleware acting as CDN Cache.
+
+---
 
 ### Closing Remarks
 
@@ -52,7 +56,7 @@ While Build-time MFE architecture requires you to deploy it in a sequence. So ea
 
 `Disclaimer: This is my opinion.`
 
-- `single-spa.js` is more `opinionated`, has more additional features (because it directly solves the problem of multi framework MFE)
+- `single-spa.js` is more `opinionated`, has more additional features (because it directly solves the problem of multi framework MFE). Haven't tried it myself, so this conclusion might be premature, will try it in near future.
 
 - `Webpack Module Federation` is `unopinionated`. It starts with the problem of sharing modules, but ultimately act as a tool at core to share module. But can be solved in MFE as well (build time, run time). This is unopinionated, and I think is the best solution right now, because most project is already built with webpack that is already integrated with module federation plugin.
 
