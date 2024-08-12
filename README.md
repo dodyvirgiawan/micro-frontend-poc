@@ -2,6 +2,10 @@
 
 Demo: https://d1q8kh006cynrk.cloudfront.net
 
+Login/sign-up to be redirected do dashboard. Install React & Vue dev tools to inspect.
+
+![My Image](./mfe.png)
+
 ---
 
 ### Webpack Module Federation for Micro Frontend
