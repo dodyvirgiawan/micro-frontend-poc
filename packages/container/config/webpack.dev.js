@@ -7,6 +7,12 @@ const packageJsonDependencies = require('../package.json').dependencies;
 
 const devConfig = {
   mode: 'development',
+
+  // Related to PublicPath problem (if nested route -> will error, therefore define whole domain)
+  output: {
+    publicPath: 'http://localhost:8080/'
+  },
+
   devServer: {
     port: 8080,
     historyApiFallback: {
@@ -17,7 +23,8 @@ const devConfig = {
     new ModuleFederationPlugin({
       name: 'container', // not required, just follow convention
       remotes: {
-        'marketing': 'marketing@http://localhost:8081/remoteEntry.js'
+        'marketing': 'marketing@http://localhost:8081/remoteEntry.js',
+        'auth': 'auth@http://localhost:8082/remoteEntry.js'
       },
       // This is if you want to be more specific
       // Benefit is that it is highly customizable, only if you want to update it regularly

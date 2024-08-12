@@ -33,7 +33,6 @@ export default function App({ history }) {
           <Route path="/" component={Landing} />
         </Switch>
       </Router>
-
     </StylesProvider>
   )
 }

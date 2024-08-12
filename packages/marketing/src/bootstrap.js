@@ -11,9 +11,11 @@ const mount = (element, childEvents = {}, options = {}) => {
   const { onNavigate } = childEvents;
 
   // ! To determine if is isolation or not (whether to use Browser or Memory Router)
-  const { defaultHistory } = options;
+  const { defaultHistory, initialPath } = options;
 
-  const history = defaultHistory || createMemoryHistory();
+  const history = defaultHistory || createMemoryHistory({
+    initialEntries: [initialPath] // to sync the default router state between container to this marketing
+  });
 
   if (onNavigate) {
     history.listen(onNavigate);
