@@ -12,7 +12,7 @@ Login/sign-up to be redirected do dashboard. Install React & Vue dev tools to in
 
 This repository demonstrates my learning of `Webpack Module Federation` when implementing Micro Frontends Architecture. This approach is using `Run-time Microfrontend` (more on my thoughts on `Build-time Microfrontend` on closing remarks below).
 
-This is just a proof of concept application.
+This is just a proof of concept application where I develop it alongside following an online course.
 
 #### Monorepo
 This MFE uses monorepo approach.
@@ -78,7 +78,3 @@ While Build-time MFE architecture requires you to deploy it in a sequence. So ea
 - `Webpack Module Federation` is `unopinionated`. It starts with the problem of sharing modules, but ultimately act as a tool at core to share module. But can be solved in MFE as well (build time, run time). This is unopinionated, and I think is the best solution right now, because most project is already built with webpack that is already integrated with module federation plugin.
 
 `Ultimately, it comes back to your use cases/project requirements. But if I had to pick one as a fresh start, I would use Webpack Module Federation`
-
-#### Notes
-
-- This POC app is created alongside following [an Udemy course](https://www.udemy.com/course/microfrontend-course/), thanks to Stephen Grider.
