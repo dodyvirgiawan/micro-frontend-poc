@@ -2,9 +2,9 @@
 
 Demo: https://d1q8kh006cynrk.cloudfront.net
 
-Login/sign-up to be redirected do dashboard. Install React & Vue dev tools to inspect.
+Login/sign-up to be redirected to dashboard. Install React & Vue dev tools to inspect.
 
-![My Image](./mfe.png)
+![MFE](./mfe.png)
 
 ---
 
@@ -75,6 +75,6 @@ While Build-time MFE architecture requires you to deploy it in a sequence. So ea
 
 - `single-spa.js` is more `opinionated`, has more additional features (because it directly solves the problem of multi framework MFE). Haven't tried it myself, so this conclusion might be premature, will try it in near future.
 
-- `Webpack Module Federation` is `unopinionated`. It starts with the problem of sharing modules, but ultimately act as a tool at core to share module. But can be solved in MFE as well (build time, run time). This is unopinionated, and I think is the best solution right now, because most project is already built with webpack that is already integrated with module federation plugin.
+- `Webpack Module Federation` is `unopinionated`. It starts with the problem of sharing modules, but ultimately act as a tool at core to share module. But can be used to create MFE architecture as well (build time, run time). This is unopinionated, and I think is the best solution right now, because most project is already built with webpack that is already integrated with module federation plugin.
 
 `Ultimately, it comes back to your use cases/project requirements. But if I had to pick one as a fresh start, I would use Webpack Module Federation`
