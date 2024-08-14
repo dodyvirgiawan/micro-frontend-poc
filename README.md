@@ -78,3 +78,6 @@ While Build-time MFE architecture requires you to deploy it in a sequence. So ea
 - `Webpack Module Federation` is `unopinionated`. It starts with the problem of sharing modules, but ultimately act as a tool at core to share module. But can be used to create MFE architecture as well (build time, run time). This is unopinionated, and I think is the best solution right now, because most project is already built with webpack that is already integrated with module federation plugin.
 
 `Ultimately, it comes back to your use cases/project requirements. But if I had to pick one as a fresh start, I would use Webpack Module Federation`
+
+### Notes
+- If you want to have any discussion, feel free to reach me out via `LinkedIn` or email `dody.virgiawan97@gmail.com`
